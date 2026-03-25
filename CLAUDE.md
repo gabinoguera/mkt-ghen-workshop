@@ -223,9 +223,9 @@ Basada en **Holistic SEO** de Koray Tugberk GUBUR (holisticseo.digital).
 | Agente | Skill invocable | Expertise |
 |--------|-----------------|-----------|
 | seo-strategist | `/seo` | Estrategia SEO/GEO, topical maps, content architecture, semantic audit |
-| seo-tecnico | `/seo-tecnico` | Auditoría técnica SEO: crawlability, indexación, CWV, schema validation, canonicals, mobile |
+| seo-tecnico | `/seo-tecnico` | Auditoría técnica SEO: crawlability, indexación, CWV, schema, performance (Lighthouse-based) |
 | marketing-copywriter | `/copywriting` | Copy técnico en [YOUR_LANGUAGE] para [YOUR_SITE_URL], voz de experto accesible |
-| wp-implementer | `/publish` | Implementación técnica WordPress, Rank Math, schema, publicación via API |
+| wp-implementer | — (agente de pipeline) | Implementación técnica WordPress, Rank Math, schema, publicación via API |
 
 ### Workflow
 

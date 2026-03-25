@@ -146,9 +146,10 @@ Este es el paso más importante. Abre `CLAUDE.md` y rellena todos los placeholde
 ```
 /seo         → Estrategia SEO, topical maps, content briefs, auditoría GEO
 /copywriting → Copy de páginas, landings, artículos técnicos
-/seo-tecnico → Auditoría técnica: indexación, CWV, schema, canonicals
-/publish     → Publicación WordPress, imagen destacada, Rank Math meta
+/seo-tecnico → Auditoría técnica: indexación, CWV, schema, canonicals, performance
 ```
+
+> `@wp-implementer` se invoca directamente como agente en el pipeline — no necesita skill standalone.
 
 ### Herramientas CLI
 
