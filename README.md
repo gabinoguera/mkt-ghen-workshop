@@ -138,14 +138,16 @@ Este es el paso más importante. Abre `CLAUDE.md` y rellena todos los placeholde
 
 4. Sigue el pipeline de agentes:
    ```
-   @seo-strategist → @marketing-copywriter → @wp-implementer → @seo-tecnico
+   @seo-strategist → @marketing-copywriter → qa_checker.py → @wp-implementer → @seo-tecnico
    ```
 
 ### Skills invocables
 
 ```
-/seo    → Estrategia SEO, topical maps, content briefs, auditoría GEO
+/seo         → Estrategia SEO, topical maps, content briefs, auditoría GEO
 /copywriting → Copy de páginas, landings, artículos técnicos
+/seo-tecnico → Auditoría técnica: indexación, CWV, schema, canonicals
+/publish     → Publicación WordPress, imagen destacada, Rank Math meta
 ```
 
 ### Herramientas CLI
@@ -178,7 +180,7 @@ python tools/image_generator.py --prompt "descripción de la imagen"
 El flujo estándar:
 
 ```
-backlog → strategy → copy → implementation → tecnico-review → done
+backlog → strategy → copy → qa-review → implementation → tecnico-review → done
 ```
 
 ---

@@ -220,12 +220,12 @@ Basada en **Holistic SEO** de Koray Tugberk GUBUR (holisticseo.digital).
 
 ## Agentes
 
-| Agente | Expertise |
-|--------|-----------|
-| seo-strategist | Estrategia SEO/GEO, topical maps, content architecture, semantic audit |
-| seo-tecnico | Auditoría técnica SEO: crawlability, indexación, CWV, schema validation, canonicals, mobile |
-| marketing-copywriter | Copy técnico en [YOUR_LANGUAGE] para [YOUR_SITE_URL], voz de experto accesible |
-| wp-implementer | Implementación técnica WordPress, Rank Math, schema, publicación via API |
+| Agente | Skill invocable | Expertise |
+|--------|-----------------|-----------|
+| seo-strategist | `/seo` | Estrategia SEO/GEO, topical maps, content architecture, semantic audit |
+| seo-tecnico | `/seo-tecnico` | Auditoría técnica SEO: crawlability, indexación, CWV, schema validation, canonicals, mobile |
+| marketing-copywriter | `/copywriting` | Copy técnico en [YOUR_LANGUAGE] para [YOUR_SITE_URL], voz de experto accesible |
+| wp-implementer | `/publish` | Implementación técnica WordPress, Rank Math, schema, publicación via API |
 
 ### Workflow
 
@@ -236,9 +236,12 @@ Basada en **Holistic SEO** de Koray Tugberk GUBUR (holisticseo.digital).
         ↓                          estado: backlog → strategy → copy
         ↓          ← puede delegar issues técnicos a @seo-tecnico (cross-consult)
 @marketing-copywriter → escribe copy + prompt de imagen destacada
-        ↓                          usa: qa_checker.py
         ↓                          rellena: "Decisiones de copy"
-        ↓                          estado: copy → implementation
+        ↓                          estado: copy → qa-review
+        ↓
+[QA] qa_checker.py → validación mecánica antes de publicar
+        ↓                          verifica: densidad keyword, headings, estilo, longitud
+        ↓                          QA score anotado en sesión → estado: qa-review → implementation
 @wp-implementer → genera imagen + publica en WordPress
         ↓                          usa: image_generator.py, wp_publisher.py
         ↓                          rellena: "Implementación"

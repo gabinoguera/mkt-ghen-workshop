@@ -4,7 +4,7 @@
 > antes de trabajar y rellena SU sección al terminar. Los deliverables completos
 > van en `.claude/doc/{feature_name}/`.
 
-**Estado:** `backlog` → `strategy` → `copy` → `implementation` → `tecnico-review` → `done`
+**Estado:** `backlog` → `strategy` → `copy` → `qa-review` → `implementation` → `tecnico-review` → `done`
 
 **Estado actual:** `backlog`
 

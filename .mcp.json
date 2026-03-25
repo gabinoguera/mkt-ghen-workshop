@@ -11,11 +11,6 @@
       "command": "docker",
       "args": ["run", "--rm", "-i", "mcp/sequentialthinking"]
     },
-    "memory": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"]
-    },
 
     // ── Navegador ────────────────────────────────────────────────────────
     "playwright": {
@@ -47,38 +42,10 @@
       "args": ["-y", "@drawio/mcp"]
     },
 
-    // ── Observabilidad / Trazas LLM ──────────────────────────────────────
-    // Opik: comet.com/opik → API Keys
-    "opik": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "opik-mcp",
-        "--apiKey",
-        "<YOUR_OPIK_API_KEY>"
-      ]
-    },
-
-    // Logfire: logfire.pydantic.dev → API tokens (read-only recomendado)
-    "logfire": {
-      "type": "stdio",
-      "command": "uvx",
-      "args": [
-        "logfire-mcp@latest",
-        "--read-token=<YOUR_LOGFIRE_READ_TOKEN>"
-      ]
-    },
-
-    // Sentry (no requiere token en .mcp.json, usa auth propia)
-    "sentry": {
-      "type": "http",
-      "url": "https://mcp.sentry.dev/mcp"
-    },
-
     // ── Analytics y SEO ──────────────────────────────────────────────────
     // Google Search Console
     // 1. Descarga client_secrets.json de Google Cloud Console
-    // 2. Activa "Search Console API" en tu proyecto
+    // 2. Activa "Search Console API" en tu proyecto GCP
     // 3. Coloca el archivo en la raíz del workspace
     "gsc": {
       "type": "stdio",
@@ -91,8 +58,8 @@
     },
 
     // Google Analytics 4
-    // 1. Crea credenciales de Application Default en Google Cloud
-    //    $ gcloud auth application-default login --scopes="..."
+    // 1. Autentícate con gcloud:
+    //    $ gcloud auth application-default login --scopes="openid,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/analytics.readonly"
     // 2. Sustituye los valores con los de tu proyecto y propiedad GA4
     "google-analytics": {
       "type": "stdio",

@@ -128,8 +128,9 @@ Ejecutamos el pipeline completo con un artículo real:
 1. Crear sesión: `cp .claude/sessions/TEMPLATE.md .claude/sessions/mi-primer-articulo.md`
 2. `@seo-strategist` — análisis de competencia + brief SEO
 3. `@marketing-copywriter` — redacción del artículo
-4. `@wp-implementer` — generación de imagen + publicación como draft
-5. `@seo-tecnico` — validación técnica post-publicación
+4. `python tools/qa_checker.py` — validación mecánica antes de publicar (keyword density, headings, estilo)
+5. `@wp-implementer` — generación de imagen + publicación como draft
+6. `@seo-tecnico` — validación técnica post-publicación
 
 Con GitHub Copilot: mismo ejercicio desde VS Code con Copilot Agent.
 
