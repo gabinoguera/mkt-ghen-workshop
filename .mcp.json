@@ -1,0 +1,108 @@
+{
+  "mcpServers": {
+    // ── Razonamiento y contexto ──────────────────────────────────────────
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "sequentialthinking": {
+      "type": "stdio",
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "mcp/sequentialthinking"]
+    },
+    "memory": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+
+    // ── Navegador ────────────────────────────────────────────────────────
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "concurrent-browser": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["concurrent-browser-mcp", "--max-instances", "20"]
+    },
+
+    // ── GitHub ───────────────────────────────────────────────────────────
+    // Token: github.com → Settings → Developer settings → Personal access tokens
+    "github": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_GITHUB_TOKEN>"
+      }
+    },
+
+    // ── Diagramas ────────────────────────────────────────────────────────
+    "drawio": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@drawio/mcp"]
+    },
+
+    // ── Observabilidad / Trazas LLM ──────────────────────────────────────
+    // Opik: comet.com/opik → API Keys
+    "opik": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "opik-mcp",
+        "--apiKey",
+        "<YOUR_OPIK_API_KEY>"
+      ]
+    },
+
+    // Logfire: logfire.pydantic.dev → API tokens (read-only recomendado)
+    "logfire": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "logfire-mcp@latest",
+        "--read-token=<YOUR_LOGFIRE_READ_TOKEN>"
+      ]
+    },
+
+    // Sentry (no requiere token en .mcp.json, usa auth propia)
+    "sentry": {
+      "type": "http",
+      "url": "https://mcp.sentry.dev/mcp"
+    },
+
+    // ── Analytics y SEO ──────────────────────────────────────────────────
+    // Google Search Console
+    // 1. Descarga client_secrets.json de Google Cloud Console
+    // 2. Activa "Search Console API" en tu proyecto
+    // 3. Coloca el archivo en la raíz del workspace
+    "gsc": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-gsc"],
+      "env": {
+        "GSC_OAUTH_CLIENT_SECRETS_FILE": "./your_client_secrets.json",
+        "GSC_DATA_STATE": "all"
+      }
+    },
+
+    // Google Analytics 4
+    // 1. Crea credenciales de Application Default en Google Cloud
+    //    $ gcloud auth application-default login --scopes="..."
+    // 2. Sustituye los valores con los de tu proyecto y propiedad GA4
+    "google-analytics": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["analytics-mcp"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "~/.config/gcloud/application_default_credentials.json",
+        "GOOGLE_PROJECT_ID": "<YOUR_GCP_PROJECT_ID>",
+        "GA_PROPERTY_ID": "<YOUR_GA4_PROPERTY_ID>"
+      }
+    }
+  }
+}
