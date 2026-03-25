@@ -196,26 +196,31 @@ Basada en **Holistic SEO** de Koray Tugberk GUBUR (holisticseo.digital).
 ```
 [YOUR_WORKSPACE_NAME]/
 ├── .claude/
-│   ├── agents/           # seo-strategist, marketing-copywriter, wp-implementer, seo-tecnico
-│   ├── skills/seo/       # Skill SEO invocable + references
-│   ├── skills/copywriting/ # Skill copywriting + references
-│   ├── sessions/         # Sesión compartida por feature (TEMPLATE.md)
-│   └── doc/              # Output de planes por feature
+│   ├── agents/                   # seo-strategist, marketing-copywriter, wp-implementer, seo-tecnico
+│   ├── skills/
+│   │   ├── seo/                  # /seo — Holistic SEO, GEO, autoridad topical
+│   │   ├── copywriting/          # /copywriting — frameworks de copy
+│   │   └── seo-tecnico/          # /seo-tecnico — Lighthouse, CWV, performance, a11y
+│   │       └── references/       # 6 refs de addyosmani/web-quality-skills (MIT)
+│   ├── sessions/                 # Sesión compartida por feature (TEMPLATE.md)
+│   └── doc/                      # Output de planes por feature
 │       └── wordpress-reference/  # Spectra block patterns, referencias WP
-├── tools/                # CLI tools Python
-│   ├── wp_publisher.py   # Publicación WordPress REST API
-│   ├── serp_analyzer.py  # Scraping + métricas SEO
-│   ├── qa_checker.py     # QA mecánico de contenido
-│   ├── image_generator.py# Generación de imágenes (Gemini)
-│   ├── config.py         # Config compartida (.env)
-│   └── setup.sh          # Bootstrap venv + dependencias
-├── outputs/              # Imágenes generadas (gitignored)
-├── site-audit/           # Auditorías SEO del sitio
-├── topical-maps/         # Mapas topicales generados
-├── content-briefs/       # Briefs de contenido semántico
-├── competitive-analysis/ # Análisis competitivo
-├── CLAUDE.md             # Este archivo
-└── README.md             # Guía humana del workspace
+├── tools/                        # CLI tools Python
+│   ├── wp_publisher.py           # Publicación WordPress REST API
+│   ├── serp_analyzer.py          # Scraping + métricas SEO
+│   ├── qa_checker.py             # QA mecánico de contenido
+│   ├── image_generator.py        # Generación de imágenes (Gemini)
+│   ├── generate_faq_page.py      # Generación de FAQ con schema Spectra
+│   ├── config.py                 # Config compartida (.env)
+│   └── setup.sh                  # Bootstrap venv + dependencias
+├── outputs/                      # Imágenes generadas (gitignored)
+├── site-audit/                   # Auditorías SEO del sitio
+├── topical-maps/                 # Mapas topicales generados
+├── content-briefs/               # Briefs de contenido semántico
+├── competitive-analysis/         # Análisis competitivo
+├── CLAUDE.md                     # Este archivo
+├── README.md                     # Guía humana del workspace
+└── WORKSHOP.md                   # Guía pedagógica del taller
 ```
 
 ## Agentes

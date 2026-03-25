@@ -9,11 +9,11 @@ Basado en la metodología del workshop **"Pipelines de Agentes IA para Marketing
 ## Qué incluye
 
 - **4 agentes especializados** con roles definidos: SEO estratégico, SEO técnico, copywriter y publicador WordPress
-- **2 skills invocables** (`/seo`, `/copywriting`) con bases de conocimiento adjuntas
-- **5 herramientas CLI Python** para WordPress REST API, análisis SERP, QA de contenido y generación de imágenes con Gemini
-- **MCPs preconfigurados** para Google Search Console, Google Analytics 4, Playwright, GitHub y más
+- **3 skills invocables** (`/seo`, `/copywriting`, `/seo-tecnico`) con bases de conocimiento adjuntas
+- **6 herramientas CLI Python** para WordPress REST API, análisis SERP, QA de contenido, generación de imágenes, FAQs y configuración
+- **7 MCPs preconfigurados**: Google Search Console, Google Analytics 4, Playwright, GitHub, context7, drawio, sequentialthinking
 - **Plantilla de sesión** para coordinar el trabajo entre agentes en cada feature
-- **Referencias SEO**: Holistic SEO, GEO, Core Web Vitals, autoridad topical, multilingüe
+- **Referencias SEO y calidad web**: Holistic SEO, GEO, Core Web Vitals (Lighthouse), autoridad topical, performance, accesibilidad
 
 ---
 
@@ -65,9 +65,6 @@ Edita `.mcp.json` y reemplaza todos los placeholders `<YOUR_*>`:
 ```json
 // GitHub
 "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_GITHUB_TOKEN>"
-
-// Opik (observabilidad LLM) — opcional
-"--apiKey", "<YOUR_OPIK_API_KEY>"
 
 // Google Analytics 4
 "GOOGLE_PROJECT_ID": "<YOUR_GCP_PROJECT_ID>",
@@ -191,32 +188,36 @@ backlog → strategy → copy → qa-review → implementation → tecnico-revie
 ```
 .
 ├── .claude/
-│   ├── agents/           # Definiciones de los 4 agentes
-│   ├── skills/           # Skills /seo y /copywriting con referencias
-│   ├── sessions/         # Sesiones activas + TEMPLATE.md
-│   └── doc/              # Deliverables por feature
-│       └── wordpress-reference/
-├── tools/                # CLI Python
-├── competitive-analysis/ # Research de competencia
-├── content-briefs/       # Briefs de contenido
-├── topical-maps/         # Mapas topicales
-├── site-audit/           # Auditorías del sitio
-├── outputs/              # Imágenes generadas (gitignored)
-├── .env.example          # Template de credenciales
-├── .mcp.json             # Configuración de MCP servers
-├── CLAUDE.md             # Contexto del proyecto para los agentes
-├── README.md             # Este archivo
-└── WORKSHOP.md           # Guía del workshop
+│   ├── agents/               # Definiciones de los 4 agentes
+│   ├── skills/
+│   │   ├── seo/              # /seo — Holistic SEO, GEO, autoridad topical
+│   │   ├── copywriting/      # /copywriting — frameworks de copy
+│   │   └── seo-tecnico/      # /seo-tecnico — Lighthouse, CWV, performance, a11y
+│   │       └── references/   # 6 skill files de addyosmani/web-quality-skills (MIT)
+│   ├── sessions/             # Sesiones activas + TEMPLATE.md
+│   └── doc/
+│       └── wordpress-reference/  # Spectra block patterns, schema snippets
+├── tools/                    # CLI Python
+├── competitive-analysis/     # Research de competencia
+├── content-briefs/           # Briefs de contenido
+├── topical-maps/             # Mapas topicales
+├── site-audit/               # Auditorías del sitio
+├── outputs/                  # Imágenes generadas (gitignored)
+├── .env.example              # Template de credenciales
+├── .mcp.json                 # Configuración de 7 MCP servers
+├── CLAUDE.md                 # Contexto del proyecto para los agentes
+├── README.md                 # Este archivo
+└── WORKSHOP.md               # Guía pedagógica del taller
 ```
 
 ---
 
 ## Recursos adicionales
 
-- **Metodología SEO:** `.claude/skills/seo/references/` — Holistic SEO, GEO, Core Web Vitals, autoridad topical
-- **Copywriting:** `.claude/skills/copywriting/references/` — frameworks de copy, transiciones
+- **Metodología SEO:** `.claude/skills/seo/references/` — Holistic SEO, GEO, autoridad topical, multilingüe, pipeline GEO completo
+- **Calidad web (Lighthouse):** `.claude/skills/seo-tecnico/references/` — Core Web Vitals, performance, accesibilidad, best practices, auditoría completa (fuente: [addyosmani/web-quality-skills](https://github.com/addyosmani/web-quality-skills), MIT)
+- **Copywriting:** `.claude/skills/copywriting/references/` — frameworks de copy, transiciones naturales
 - **WordPress:** `.claude/doc/wordpress-reference/` — Spectra block patterns, schema snippets
-- **Pipeline GEO:** `.claude/skills/seo/references/geo-audit-pipeline.md`
 
 ---
 
