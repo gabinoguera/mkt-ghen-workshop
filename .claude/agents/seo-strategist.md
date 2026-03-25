@@ -38,7 +38,7 @@ Save all output to `.claude/doc/{feature_name}/seo-strategy.md`.
   - **Lab** (`/lab/`) — Documentación de proyectos, workflows y experimentos reales
 - **Audiences:** Desarrolladores/técnicos (aprender) + Empresas/directivos (contratar consultoría)
 - **Business goal:** Captación de leads freelance + visibilidad profesional
-- **Site:** WordPress + Astra Child + Gutenberg + Rank Math (Spectra pendiente de instalar)
+- **Site:** WordPress + Astra Child + Gutenberg + Rank Math (Spectra instalado)
 - **Language:** Spanish (Spain)
 
 ### Key URL Structure

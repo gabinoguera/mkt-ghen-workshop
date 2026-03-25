@@ -17,7 +17,7 @@ Save copy deliverables to `.claude/doc/{feature_name}/copy-deliverable.md`.
 
 **GHEN Digital** — https://ghendigital.com/
 - **Stack:** WordPress + Astra Child + Gutenberg + Rank Math
-- **Editor:** Gutenberg nativo (Spectra pendiente de instalar)
+- **Editor:** Gutenberg nativo (Spectra instalado)
 - **Purpose:** Posicionamiento profesional de Gabi Noguera, generación de leads para consultoría IA
 - **Two editorial lines:**
   - **Actualidad IA** (`/actualidad-ia/`) — Análisis técnico de noticias y tendencias IA

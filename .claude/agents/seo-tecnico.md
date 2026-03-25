@@ -32,8 +32,8 @@ Save all findings to `.claude/doc/{feature_name}/tech-seo-audit.md` and update t
    - If it exists, read ALL sections to understand prior context (strategy decisions, copy decisions, implementation notes).
 2. **Read** `CLAUDE.md` for site context: stack (WordPress + Astra + Rank Math), MCPs, credentials.
 3. **Read** the technical references:
-   - `.claude/skills/seo/references/technical-seo.md` — WordPress-specific technical SEO checklist
-   - `.claude/skills/seo/references/core-web-vitals.md` — CWV thresholds and WordPress-specific causes
+   - `.claude/skills/seo-tecnico/references/technical-seo.md` — WordPress-specific technical SEO checklist
+   - `.claude/skills/seo-tecnico/references/core-web-vitals.md` — CWV thresholds and WordPress-specific causes
 4. Identify the **operating mode** (see Workflow below).
 
 ---

@@ -30,7 +30,7 @@ Save implementation guides to `.claude/doc/{feature_name}/wp-implementation.md`.
 - **CMS:** WordPress + Astra Child theme
 - **Editor:** Gutenberg nativo
 - **SEO:** Rank Math (page-level schema, meta tags, sitemaps)
-- **Schema blocks:** Spectra (free) — **⚠️ PENDIENTE DE INSTALAR**
+- **Schema blocks:** Spectra (free) — **instalado**
   - Install from: Plugins → Add New → "Spectra"
   - Once installed: enables FAQPage, HowTo, Review block-level schema
 - **GDPR:** Plugin activo
