@@ -67,7 +67,7 @@ Trae esto instalado y funcionando el día del workshop:
 - MCPs: qué son, cómo se conectan, qué puedes hacer con ellos
 - Demo en vivo: el pipeline completo ejecutándose
 
-> **Ejercicio:** Analiza el repositorio que acabas de clonar. Identifica los 4 agentes, las 2 skills y los 10 MCPs.
+> **Ejercicio:** Analiza el repositorio que acabas de clonar. Identifica los 5 agentes, las 3 skills y los 7 MCPs.
 
 ---
 
@@ -129,12 +129,16 @@ Ejecutamos el pipeline completo con un artículo real:
 2. `@seo-strategist` — análisis de competencia + brief SEO
 3. `@marketing-copywriter` — redacción del artículo
 4. `python tools/qa_checker.py` — validación mecánica antes de publicar (keyword density, headings, estilo)
-5. `@wp-implementer` — generación de imagen + publicación como draft
+5. **Decisión:** ¿Publicar en WordPress o generar HTML local?
+   - **Opción A:** `@wp-implementer` — generación de imagen + publicación como draft en WordPress
+   - **Opción B:** `@html-implementer` — generación de imagen + HTML estático en `outputs/html/`
 6. `@seo-tecnico` — validación técnica post-publicación
 
 Con GitHub Copilot: mismo ejercicio desde VS Code con Copilot Agent.
 
-> **Ejercicio final:** Cada participante lanza su propio pipeline con un artículo de su blog. El resultado: un draft publicado en su WordPress con meta SEO, imagen destacada y validación técnica.
+> **Ejercicio final:** Cada participante lanza su propio pipeline con un artículo de su blog. El resultado: 
+> - **Con WordPress:** Un draft publicado con meta SEO, imagen destacada y validación técnica
+> - **Sin WordPress:** Un HTML estático completo en `outputs/html/` listo para subir a cualquier servidor
 
 ---
 
