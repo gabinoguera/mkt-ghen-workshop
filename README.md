@@ -8,12 +8,13 @@ Basado en la metodología del workshop **"Pipelines de Agentes IA para Marketing
 
 ## Qué incluye
 
-- **4 agentes especializados** con roles definidos: SEO estratégico, SEO técnico, copywriter y publicador WordPress
+- **5 agentes especializados** con roles definidos: SEO estratégico, SEO técnico, copywriter, publicador WordPress y generador HTML estático
 - **3 skills invocables** (`/seo`, `/copywriting`, `/seo-tecnico`) con bases de conocimiento adjuntas
-- **6 herramientas CLI Python** para WordPress REST API, análisis SERP, QA de contenido, generación de imágenes, FAQs y configuración
+- **6 herramientas CLI Python** para WordPress REST API, análisis SERP, QA de contenido, generación de imágenes, FAQs y generación HTML
 - **7 MCPs preconfigurados**: Google Search Console, Google Analytics 4, Playwright, GitHub, context7, drawio, sequentialthinking
 - **Plantilla de sesión** para coordinar el trabajo entre agentes en cada feature
 - **Referencias SEO y calidad web**: Holistic SEO, GEO, Core Web Vitals (Lighthouse), autoridad topical, performance, accesibilidad
+- **Doble output**: Publicación en WordPress O generación de HTML estático local
 
 ---
 
@@ -24,10 +25,12 @@ Basado en la metodología del workshop **"Pipelines de Agentes IA para Marketing
 | [Claude Code](https://claude.ai/code) | CLI principal — agentes y skills |
 | [GitHub Copilot](https://github.com/features/copilot) | Alternativa/complemento en VS Code |
 | Python 3.11+ | Herramientas CLI (`tools/`) |
-| WordPress + Rank Math | Sitio de destino para publicación |
-| Spectra plugin (free) | Schema blocks (FAQPage, HowTo) |
-| Google Cloud account | GSC + GA4 MCPs |
+| WordPress + Rank Math | (Opcional) Sitio de destino para publicación con `@wp-implementer` |
+| Spectra plugin (free) | (Opcional) Schema blocks (FAQPage, HowTo) para WordPress |
+| Google Cloud account | (Opcional) GSC + GA4 MCPs para auditorías avanzadas |
 | Gemini API key | Generación de imágenes destacadas |
+
+**Nota:** Puedes usar el pipeline completo sin WordPress si prefieres generar HTML local con `@html-implementer`.
 
 ---
 
@@ -135,8 +138,13 @@ Este es el paso más importante. Abre `CLAUDE.md` y rellena todos los placeholde
 
 4. Sigue el pipeline de agentes:
    ```
-   @seo-strategist → @marketing-copywriter → qa_checker.py → @wp-implementer → @seo-tecnico
+   @seo-strategist → @marketing-copywriter → qa_checker.py → 
+   [@wp-implementer O @html-implementer] → @seo-tecnico
    ```
+   
+5. Cuando llegues a implementación, decide:
+   - **¿Quieres publicar en WordPress?** → invoca `@wp-implementer`
+   - **¿Prefieres HTML local?** → invoca `@html-implementer`
 
 ### Skills invocables
 
@@ -146,22 +154,25 @@ Este es el paso más importante. Abre `CLAUDE.md` y rellena todos los placeholde
 /seo-tecnico → Auditoría técnica: indexación, CWV, schema, canonicals, performance
 ```
 
-> `@wp-implementer` se invoca directamente como agente en el pipeline — no necesita skill standalone.
+> `@wp-implementer` y `@html-implementer` se invocan directamente como agentes en el pipeline — no necesitan skills standalone.
 
 ### Herramientas CLI
 
 ```bash
 # Publicar un post en WordPress
-python tools/wp_publisher.py --file content.md --status draft
+python tools/wp_publisher.py publish --file content.md --status draft
+
+# Generar HTML estático local
+python tools/local_generator.py generate --file content.md --feature-name mi-articulo
 
 # Analizar las SERPs de una keyword
 python tools/serp_analyzer.py --query "tu keyword" --lang es
 
 # QA de contenido antes de publicar
-python tools/qa_checker.py --file content.md
+python tools/qa_checker.py check --file content.md
 
 # Generar imagen destacada con Gemini
-python tools/image_generator.py --prompt "descripción de la imagen"
+python tools/image_generator.py generate --prompt "descripción de la imagen"
 ```
 
 ---
@@ -172,14 +183,21 @@ python tools/image_generator.py --prompt "descripción de la imagen"
 @seo-strategist       → Topical maps, content briefs, análisis competencia, GEO
 @marketing-copywriter → Artículos, landings, copy técnico en tu idioma
 @wp-implementer       → Publica en WP via API, gestiona schema, sube imágenes
+@html-implementer     → Genera HTML estático local con schema embebido
 @seo-tecnico          → Auditoría técnica: indexación, CWV, schema, canonicals
 ```
 
-El flujo estándar:
+El flujo estándar con **decisión de implementación**:
 
 ```
-backlog → strategy → copy → qa-review → implementation → tecnico-review → done
+backlog → strategy → copy → qa-review → [WordPress O HTML local?] → implementation → tecnico-review → done
+                                                ↓                         ↓
+                                        @wp-implementer          @html-implementer
 ```
+
+**¿Cuándo usar cada uno?**
+- **@wp-implementer** → Si tienes WordPress configurado y quieres publicar directamente
+- **@html-implementer** → Si quieres archivos HTML locales para subir manualmente, usar en hosting estático, o trabajar sin WordPress
 
 ---
 
@@ -188,7 +206,7 @@ backlog → strategy → copy → qa-review → implementation → tecnico-revie
 ```
 .
 ├── .claude/
-│   ├── agents/               # Definiciones de los 4 agentes
+│   ├── agents/               # Definiciones de los 5 agentes
 │   ├── skills/
 │   │   ├── seo/              # /seo — Holistic SEO, GEO, autoridad topical
 │   │   ├── copywriting/      # /copywriting — frameworks de copy
@@ -198,11 +216,12 @@ backlog → strategy → copy → qa-review → implementation → tecnico-revie
 │   └── doc/
 │       └── wordpress-reference/  # Spectra block patterns, schema snippets
 ├── tools/                    # CLI Python
+│   └── outputs/
+│       └── html/             # HTML generado por @html-implementer
 ├── competitive-analysis/     # Research de competencia
 ├── content-briefs/           # Briefs de contenido
 ├── topical-maps/             # Mapas topicales
 ├── site-audit/               # Auditorías del sitio
-├── outputs/                  # Imágenes generadas (gitignored)
 ├── .env.example              # Template de credenciales
 ├── .mcp.json                 # Configuración de 7 MCP servers
 ├── CLAUDE.md                 # Contexto del proyecto para los agentes

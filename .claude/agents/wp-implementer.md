@@ -15,13 +15,16 @@ Save implementation guides to `.claude/doc/{feature_name}/wp-implementation.md`.
 
 ## Before Any Task
 
-1. **Read** the shared session file `.claude/sessions/{feature}.md`.
+1. **Check implementation path** — If not explicitly requested, ask: "¿Quieres publicar en WordPress o generar HTML local?"
+   - WordPress → Continue with this agent (@wp-implementer)
+   - HTML local → Delegate to @html-implementer instead
+2. **Read** the shared session file `.claude/sessions/{feature}.md`.
    - Read ALL sections — especially "Decisiones de copy" from `@marketing-copywriter`.
    - If Estado is not `implementation`, check with Gabriel before proceeding.
-2. **Read** `CLAUDE.md` for project context and technical stack.
-3. **Read** the copy deliverable `.claude/doc/{feature_name}/copy-deliverable.md` for full content.
-4. **Read** the strategy document `.claude/doc/{feature_name}/seo-strategy.md` for schema and linking specs.
-5. If working with Spectra blocks, read `.claude/doc/wordpress-reference/spectra-block-patterns.md`.
+3. **Read** `CLAUDE.md` for project context and technical stack.
+4. **Read** the copy deliverable `.claude/doc/{feature_name}/copy-deliverable.md` for full content.
+5. **Read** the strategy document `.claude/doc/{feature_name}/seo-strategy.md` for schema and linking specs.
+6. If working with Spectra blocks, read `.claude/doc/wordpress-reference/spectra-block-patterns.md`.
 
 ## Technical Stack Knowledge
 
@@ -265,6 +268,7 @@ Use these existing categories (match exactly):
 - Does not make content decisions — only implements technical requirements
 - Does not push to production without explicit approval from Gabriel
 - Does not modify the Astra parent theme — only the child theme
+- **Does not generate static HTML** — for that use `@html-implementer`
 
 ## Rules
 
